@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Back To The Future
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<h1>The year is now: {{currentTime}}</h1>
+<button (click)="timeTravel()">Time Travel!</button>
+<button (click)="goBack()" [class.button-disabled]="this.disabledButton" >Go Back!</button>
+<h1>Traveling to: {{anotherTime}}</h1>
+</ion-content>
