@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
+import {FormatYear} from '../../pipes/FormatYear';
 
 @Component({
-  templateUrl: 'build/pages/home/home.html'
+  templateUrl: 'build/pages/home/home.html',
+  pipes:[FormatYear]
 })
 export class HomePage {
 
@@ -14,7 +16,7 @@ export class HomePage {
 
 // CONSTRUCTOR for the page class
   constructor(public navCtrl: NavController) {
-    this._currentTime = new Date().getFullYear().toString() + " AD";
+    this._currentTime = new Date().getFullYear().toString();
     this._anotherTime = this.pickRandomYear();
   }
 
@@ -48,7 +50,8 @@ export class HomePage {
 // PRIVATE Class methods
   private pickRandomYear(oldestYear:number = -4000, MostRecentYear:number = 4000){
     let randomYear: Number = Math.floor( Math.random() * (MostRecentYear - oldestYear + 1)) + oldestYear;
-    return (randomYear > 0) ? (randomYear).toString() + " AD" : (-randomYear).toString() + " BC"; 
+    return randomYear.toString();
+    //return (randomYear > 0) ? (randomYear).toString() + " AD" : (-randomYear).toString() + " BC"; 
   }
 
   private checkGoBackEnabled(){
